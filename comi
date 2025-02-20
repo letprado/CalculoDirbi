@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da DIRBI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #d9d9d9;
+            color: #000;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #ff5733;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #c70039;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cálculo da DIRBI</h2>
+        <label for="folha">Digite o valor da folha:</label>
+        <input type="text" id="folha" placeholder="Ex: 10000,50">
+        
+        <label for="cprb">Digite o valor do CPRB:</label>
+        <input type="text" id="cprb" placeholder="Ex: 1200,75">
+        
+        <button onclick="calcularDIRBI()">Calcular DIRBI</button>
+        
+        <h3 id="resultado"></h3>
+    </div>
+
+    <div class="footer">
+        <p>Este sistema é propriedade do usuário: Letícia e não pode ser reproduzido sem autorização.</p>
+    </div>
+
+    <script>
+        function converterValor(valor) {
+            return parseFloat(valor.replace(",", "."));
+        }
+
+        function calcularDIRBI() {
+            let folha = converterValor(document.getElementById("folha").value);
+            let cprb = converterValor(document.getElementById("cprb").value);
+            
+            if (isNaN(folha) || isNaN(cprb)) {
+                alert("Por favor, insira valores numéricos válidos.");
+                return;
+            }
+            
+            let dirbi = folha - cprb;
+            document.getElementById("resultado").innerText = `O valor da DIRBI a informar é: R$ ${dirbi.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
